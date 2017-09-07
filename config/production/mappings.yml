@@ -267,7 +267,7 @@ general:
       [ 'scripts/brig',                               'production_bin' ],
       [ 'scripts/ngsDist',                            'production_bin' ],
       [ 'scripts/setup_seroba_dbs.sh',                'pathdev_bin' ],
-      [ 'scripts/tophat',                             'production_bin' ],
+      [ 'scripts/tophat-2.1.0',                       'production_bin' ],
       [ 'scripts/mashmap',                            'production_bin' ]
   ]
   splimer: [ [ 'splimer.pl', 'production_bin' ], [ 'modules/FastaLength.pm', 'production_lib' ],
