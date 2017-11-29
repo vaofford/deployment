@@ -270,7 +270,8 @@ general:
       [ 'scripts/tophat-2.1.0',                       'production_bin' ],
       [ 'scripts/mashmap',                            'production_bin' ],
       [ 'scripts/utr_analysis.py',                    'production_bin' ],
-      [ 'scripts/filtlong',                           'production_bin' ]
+      [ 'scripts/filtlong',                           'production_bin' ],
+      [ 'scripts/fastANI',                            'production_bin' ]
   ]
   splimer: [ [ 'splimer.pl', 'production_bin' ], [ 'modules/FastaLength.pm', 'production_lib' ],
   ]
