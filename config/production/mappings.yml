@@ -272,7 +272,8 @@ general:
       [ 'scripts/utr_analysis.py',                    'production_bin' ],
       [ 'scripts/filtlong',                           'production_bin' ],
       [ 'scripts/fastANI',                            'production_bin' ],
-      [ 'scripts/fqtools',                            'production_bin' ]
+      [ 'scripts/fqtools',                            'production_bin' ],
+      [ 'scripts/racon',                              'production_bin' ]
   ]
   splimer: [ [ 'splimer.pl', 'production_bin' ], [ 'modules/FastaLength.pm', 'production_lib' ],
   ]
