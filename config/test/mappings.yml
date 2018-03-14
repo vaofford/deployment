@@ -18,7 +18,7 @@ general:
         ]
 
   perl: [
-            ['scripts/backup_documents.pl',           'pathdev_bin'   ], 
+            ['scripts/backup_documents.pl',           'pathdev_bin'   ],
             ['scripts/populate_organisms.pl',         'pathdev_bin'   ],
             ['scripts/rt_report',                     'pathdev_bin'   ],
             ['scripts/update_lustre_ref_genomes.pl',  'pathdev_bin'   ],
@@ -27,7 +27,7 @@ general:
             ['scripts/list_used_references.pl',       'pathdev_bin'   ],
             ['scripts/reads_analysis.pl',             'pathdev_bin'   ],
             ['scripts/set_orgprops.pl',               'pathdev_bin'   ],
-            ['scripts/check_aux_files.pl',            'pathdev_bin'   ],    
+            ['scripts/check_aux_files.pl',            'pathdev_bin'   ],
             ['scripts/ena_submissions_update.pl',     'pathdev_bin'   ],
             ['scripts/generate_project_pages.pl',     'pathdev_bin'   ],
             ['scripts/update_species_table.pl',       'pathdev_bin'   ],
@@ -53,7 +53,7 @@ general:
             ['scripts/blast2tab.pl',                  'production_bin'],
             ['scripts/sequence_search.pl',            'production_bin'],
             ['scripts/omcl2genedb.pl',                'production_bin'],
-            ['modules/GoogleDocument.pm',             'production_lib'],  
+            ['modules/GoogleDocument.pm',             'production_lib'],
             ['modules/GoogleDocumentHelper.pm',       'production_lib'],
             ['scripts/contigs2fas.pl',                'production_bin']
         ]
@@ -67,13 +67,9 @@ general:
             ['scripts/tmhmm_chado',                        'production_bin'],
             ['scripts/writedb_entry',                      'production_bin'],
             ['scripts/chado_dump_transcripts',             'production_bin'],
-            ['scripts/art_act_launcher',                   'production_bin'],
             ['scripts/tmhmm_chado',                        'production_bin'],
             ['scripts/pfamscan_chado',                     'production_bin'],
             ['scripts/chado_dump_proteins',                'production_bin'],
             ['scripts/pmid_extraction',                    'production_bin'],
-            ['scripts/dnaplotter',                         'production_bin'],
-            ['scripts/art',                                'production_bin'],
-            ['scripts/act',                                'production_bin'],
             ['scripts/orientationtracker.sh',              'production_bin']
         ]
