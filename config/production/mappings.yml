@@ -271,7 +271,8 @@ general:
       [ 'scripts/fqtools',                            'production_bin' ],
       [ 'scripts/racon',                              'production_bin' ],
       [ 'scripts/breseq',                             'production_bin' ],
-      [ 'scripts/graphmap',                           'production_bin' ]
+      [ 'scripts/graphmap',                           'production_bin' ],
+      [ 'scripts/snippy',                             'production_bin' ]
   ]
   splimer: [ [ 'splimer.pl', 'production_bin' ], [ 'modules/FastaLength.pm', 'production_lib' ],
   ]
