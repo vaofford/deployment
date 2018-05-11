@@ -117,7 +117,6 @@ general:
       [ 'modules/Crawl',                                             'production_lib' ],
       [ 'scripts/pfamscan2tab_chado.pl',                             'production_bin'],
       [ 'scripts/find_untracked_studies.pl',                         'pathdev_bin' ],
-      [ 'scripts/rfamscan_dechunk.pl',                               'production_bin' ],
       [ 'scripts/run_beast.pl',                                      'production_bin' ],
       [ 'scripts/auto_update_go_terms.pl',                           'pathdev_bin' ],
       [ 'scripts/interpro_to_chado_load',                            'production_bin' ],
