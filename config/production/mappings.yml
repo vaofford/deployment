@@ -51,7 +51,6 @@ general:
       [ 'scripts/count_ns_in_alignment',                             'production_bin' ],
       [ 'scripts/pacbio_smrtanalysis',                               'production_bin' ],
       [ 'scripts/exclude_sequences_from_fasta',                      'production_bin' ],
-      [ 'scripts/backup_documents.pl',                               'pathdev_bin' ],
       [ 'scripts/populate_organisms.pl',                             'pathdev_bin' ],
       [ 'scripts/rt_report',                                         'pathdev_bin' ],
       [ 'scripts/update_lustre_ref_genomes.pl',                      'pathdev_bin' ],
@@ -59,7 +58,6 @@ general:
       [ 'scripts/check_lustre.pl',                                   'pathdev_bin' ],
       [ 'scripts/fetch_references.pl',                               'pathdev_bin' ],
       [ 'scripts/list_used_references.pl',                           'pathdev_bin' ],
-      [ 'scripts/reads_analysis.pl',                                 'pathdev_bin' ],
       [ 'scripts/set_orgprops.pl',                                   'pathdev_bin' ],
       [ 'scripts/check_aux_files.pl',                                'pathdev_bin' ],
       [ 'scripts/num_lanes_in_pipelines',                            'pathdev_bin' ],
@@ -77,26 +75,19 @@ general:
       [ 'scripts/extract_region_from_multifasta',                    'production_bin' ],
       [ 'scripts/submission_lookup',                                 'production_bin' ],
       [ 'scripts/remove_snp_sites_with_missing_data',                'production_bin' ],
-      [ 'scripts/plasmid_identification',                            'production_bin' ],
       [ 'scripts/identify_cluster_defining_snps',                    'production_bin' ],
       [ 'scripts/label_internal_nodes_of_newick_tree',               'production_bin' ],
-      [ 'scripts/bigger_blast.pl',                                   'production_bin' ],
-      [ 'scripts/blast_formatter.pl',                                'production_bin' ],
-      [ 'scripts/big_blast.pl',                                      'production_bin' ],
       [ 'scripts/rfamscan2tab.pl',                                   'production_bin' ],
       [ 'scripts/tmhmm2embl.pl',                                     'production_bin' ],
+      [ 'scripts/psu_union.pl',                                      'production_bin' ],
       [ 'scripts/signalp2embl.pl',                                   'production_bin' ],
       [ 'scripts/rfamscan_chado',                                    'production_bin' ],
       [ 'scripts/split_fa.pl',                                       'production_bin' ],
       [ 'scripts/dgpi_chado',                                        'production_bin' ],
       [ 'scripts/pfamscan2tab.pl',                                   'production_bin' ],
-      [ 'scripts/annotations_update.pl',                             'production_bin' ],
       [ 'scripts/orthomcl_chado',                                    'production_bin' ],
       [ 'scripts/blast2tab.pl',                                      'production_bin' ],
       [ 'scripts/omcl2genedb.pl',                                    'production_bin' ],
-      [ 'modules/GoogleDocument.pm',                                 'production_lib' ],
-      [ 'modules/GoogleDocumentHelper.pm',                           'production_lib' ],
-      [ 'scripts/contigs2fas.pl',                                    'production_bin' ],
       [ 'scripts/shuffle_reads',                                     'production_bin' ],
       [ 'modules/Pathfind.pm',                                       'production_lib' ],
       [ 'modules/PathfindLog.pm',                                    'production_lib' ],
@@ -125,9 +116,6 @@ general:
   ]
 
   java: [
-        ["googlecode.jar",                                   "production_java"],
-        ["src/GoogleDocument.class",                         "production_java"],
-        ["src/GoogleDocumentHelper.class",                   "production_java"],
 	["src/CATEGORY_DB.class",                            "production_java"],
 	["src/GoogleDataProjectSlurper.class",               "production_java"],
 	["src/GoogleReferenceProjectSlurper.class",          "production_java"],
@@ -195,7 +183,6 @@ general:
       [ 'scripts/fix-snapshot',                       'production_genedb' ],
       [ 'scripts/fix-staging',			      'production_genedb' ],
       [ 'scripts/run_jspecies',			      'production_bin' ],
-      [ 'scripts/path-user-code-find.sh',	      'production_bin' ],
       [ 'scripts/chado_run_iprscan',		      'production_bin' ],
       [ 'scripts/chado_convert_load_iprscan',	      'production_bin' ],
       [ 'scripts/run_haploview',		      'production_bin' ],
@@ -245,6 +232,3 @@ general:
       [ 'scripts/graphmap',                           'production_bin' ],
       [ 'scripts/snippy',                             'production_bin' ]
   ]
-splimer: [ 
-	 [ 'modules/FastaLength.pm', 'production_lib' ]
-]
