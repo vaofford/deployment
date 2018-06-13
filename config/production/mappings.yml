@@ -231,5 +231,6 @@ general:
       [ 'scripts/racon',                              'production_bin' ],
       [ 'scripts/breseq',                             'production_bin' ],
       [ 'scripts/graphmap',                           'production_bin' ],
-      [ 'scripts/snippy',                             'production_bin' ]
+      [ 'scripts/snippy',                             'production_bin' ],
+      [ 'scripts/graphtyper',                         'production_bin' ]
   ]
