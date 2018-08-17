@@ -1,6 +1,6 @@
 language: perl
 sudo: false
 install:
-  - cpanm Getopt::Long Net::SCP Git::Repository YAML::XS Time::Mock
+  - cpanm Getopt::Long Net::SCP Git::Repository YAML::XS Time::Mock File::Slurp Date::Parse 
 script:
   - make test
