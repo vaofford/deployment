@@ -19,4 +19,4 @@ is $global_config_settings->{environment}, 'test', 'test environment loaded by d
 isa_ok $global_config_settings, 'Deploy::GlobalConfigSettings';
 
 ok my %settings = %{$global_config_settings->get_config_settings()}, 'settings hash';
-is $settings{checkout_directory}, '/tmp/20100908070605', 'timestamped checkout directory';
+is $settings{checkout_directory}, '/tmp/deployment_test/20100908070605', 'timestamped checkout directory';
