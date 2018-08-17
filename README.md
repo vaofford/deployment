@@ -1,5 +1,5 @@
 # Deployment
-Deploys the general repository.
+Deploys the general repository
 
 [![Build Status](https://travis-ci.org/sanger-pathogens/deployment.svg?branch=master)](https://travis-ci.org/sanger-pathogens/deployment)   
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://github.com/sanger-pathogens/deployment/blob/master/LICENSE)   
