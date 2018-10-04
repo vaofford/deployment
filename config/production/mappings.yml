@@ -232,5 +232,7 @@ general:
       [ 'scripts/graphmap',                           'production_bin' ],
       [ 'scripts/snippy',                             'production_bin' ],
       [ 'scripts/graphtyper',                         'production_bin' ],
-      [ 'scripts/AlignGraph',                         'production_bin' ]
+      [ 'scripts/AlignGraph',                         'production_bin' ],
+      [ 'scripts/extract_chado_annotation_updates.sh','pathdev_bin' ],
+      [ 'scripts/import_chado_go_terms.sh',           'pathdev_bin' ]
   ]
