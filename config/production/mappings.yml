@@ -25,6 +25,7 @@ general:
       [ 'modules/crawl',                           'production_lib' ],
       [ 'scripts/rm_pathpipe_tmp.py',              'pathdev_bin'],
       [ 'scripts/report_large_files.py',           'pathdev_bin'],
+      [ 'scripts/eupathdb_stats.py',               'production_bin' ]
   ]
 
   perl: [
