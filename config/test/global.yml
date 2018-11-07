@@ -11,7 +11,7 @@ directories:
   production_lib:    '/tmp/deployment_test'
   pathdev_lib:       '/tmp/deployment_test'
   pathdev_bin:       '/tmp/deployment_test' 
-  pathdev_config:    '/software/pathogen/config' 
+  pathdev_config:    '/tmp/deployment_test' 
   preproduction_bin: '/tmp/deployment_test'
   preproduction_lib: '/tmp/deployment_test'
   production_java:   '/tmp/deployment_test'
