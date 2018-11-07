@@ -2,7 +2,7 @@ general:
   repository:
     url: 'git@gitlab.internal.sanger.ac.uk:sanger-pathogens/general.git'
     branch: 'master'
-  directories_to_build: ['java','perl','python','shell','c','lua','splimer','r','data']
+  directories_to_build: ['java','perl','python','shell','c','lua','splimer','r','data', 'config']
 
 checkout_directory: "/tmp"
 
@@ -10,7 +10,8 @@ directories:
   production_bin:    '/software/pathogen/internal/prod/bin'
   production_lib:    '/software/pathogen/internal/prod/lib'
   pathdev_lib:       '/software/pathogen/internal/pathdev/lib'
-  pathdev_bin:       '/software/pathogen/internal/pathdev/bin'  
+  pathdev_bin:       '/software/pathogen/internal/pathdev/bin' 
+  pathdev_config:    '/software/pathogen/config' 
   preproduction_bin: '/software/pathogen/internal/preprod/bin'
   preproduction_lib: '/software/pathogen/internal/preprod/lib'
   production_java:   '/software/pathogen/internal/pathdev/java'
