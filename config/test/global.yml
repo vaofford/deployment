@@ -2,7 +2,7 @@ general:
   repository:
     url: 'git@gitlab.internal.sanger.ac.uk:sanger-pathogens/general.git'
     branch: 'master'
-  directories_to_build: ['perl','java','python','shell']
+  directories_to_build: ['perl','java','python','shell','config']
 
 checkout_directory: "/tmp/deployment_test"
 
@@ -10,7 +10,8 @@ directories:
   production_bin:    '/tmp/deployment_test'
   production_lib:    '/tmp/deployment_test'
   pathdev_lib:       '/tmp/deployment_test'
-  pathdev_bin:       '/tmp/deployment_test'
+  pathdev_bin:       '/tmp/deployment_test' 
+  pathdev_config:    '/software/pathogen/config' 
   preproduction_bin: '/tmp/deployment_test'
   preproduction_lib: '/tmp/deployment_test'
   production_java:   '/tmp/deployment_test'

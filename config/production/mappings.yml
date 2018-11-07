@@ -141,6 +141,11 @@ general:
         [ 'adapters/solexa-adapters.quasr', 'production_etc' ],
   ]
 
+  config: [
+        [ 'database_connection_details', 'pathdev_config' ],
+        [ 'reftrack_connection_details', 'pathdev_config' ],
+  ]
+
   shell: [
       [ 'scripts/sourmash',                           'production_bin'],
       [ 'scripts/genus_genbank_to_blast',             'pathdev_bin' ],

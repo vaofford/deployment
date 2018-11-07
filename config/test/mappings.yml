@@ -76,3 +76,8 @@ general:
             ['scripts/extract_chado_annotation_updates.sh', 'pathdev_bin'],
             ['scripts/import_chado_go_terms.sh',           'pathdev_bin']
         ]
+
+  config: [
+            [ 'database_connection_details', 'pathdev_config' ],
+            [ 'reftrack_connection_details', 'pathdev_config' ],
+        ]
