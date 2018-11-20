@@ -214,7 +214,6 @@ general:
       [ 'scripts/recycle.py',                         'production_bin' ],
       [ 'scripts/pilon',                              'production_bin' ],
       [ 'scripts/atlas',                              'production_bin' ],
-      [ 'scripts/genedb_dump_database_upload_to_ftp', 'production_bin' ],
       [ 'scripts/prepare_artemis_release.sh',         'pathdev_bin'],
       [ 'scripts/fc_run',                             'production_bin' ],
       [ 'scripts/shovill',                            'production_bin' ],
