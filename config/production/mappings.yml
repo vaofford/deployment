@@ -241,7 +241,7 @@ general:
       [ 'scripts/extract_chado_annotation_updates.sh','pathdev_bin' ],
       [ 'scripts/import_chado_go_terms.sh',           'pathdev_bin' ],
       [ 'scripts/backup_chado_audit_schema.sh',       'pathdev_bin' ],
-      [ 'scripts/send_mail_with_attachment.sh',       'production_bin'],
+      [ 'scripts/send_mail_with_content.sh',          'production_bin'],
       [ 'scripts/pathpipe-pathpipe-farm3_crontab',    'pathdev_bin'],
       [ 'scripts/pathdb_farm3_crontab',               'pathdev_bin']
   ]
