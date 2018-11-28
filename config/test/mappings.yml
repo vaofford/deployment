@@ -64,7 +64,7 @@ general:
             ['scripts/update_tracking_databases.sh',       'pathdev_bin'   ],
             ['scripts/wtsi_chado_privs.ksh',               'pathdev_bin'   ],
             ['scripts/setup_pathpipe_environment.sh',      'pathdev_bin'   ],
-            ['scripts/concatgff.sh',      		   'pathdev_bin'   ],
+            ['scripts/concatgff.sh',                       'pathdev_bin'   ],
             ['scripts/tmhmm_chado',                        'production_bin'],
             ['scripts/writedb_entry',                      'production_bin'],
             ['scripts/chado_dump_transcripts',             'production_bin'],
@@ -73,8 +73,9 @@ general:
             ['scripts/chado_dump_proteins',                'production_bin'],
             ['scripts/pmid_extraction',                    'production_bin'],
             ['scripts/orientationtracker.sh',              'production_bin'],
-            ['scripts/extract_chado_annotation_updates.sh', 'pathdev_bin'],
-            ['scripts/import_chado_go_terms.sh',           'pathdev_bin']
+            ['scripts/extract_chado_annotation_updates.sh','pathdev_bin'],
+            ['scripts/import_chado_go_terms.sh',           'pathdev_bin'],
+            ['scripts/backup_chado_audit_schema.sh',       'pathdev_bin']
         ]
 
   config: [
