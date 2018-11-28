@@ -75,7 +75,7 @@ general:
             ['scripts/orientationtracker.sh',              'production_bin'],
             ['scripts/extract_chado_annotation_updates.sh','pathdev_bin'],
             ['scripts/import_chado_go_terms.sh',           'pathdev_bin'],
-			['scripts/backup_chado_audit_schema.sh',       'pathdev_bin']
+            ['scripts/backup_chado_audit_schema.sh',       'pathdev_bin']
         ]
 
   config: [
