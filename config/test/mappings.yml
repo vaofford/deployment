@@ -74,6 +74,7 @@ general:
             ['scripts/pmid_extraction',                    'production_bin'],
             ['scripts/orientationtracker.sh',              'production_bin'],
             ['scripts/extract_chado_annotation_updates.sh','pathdev_bin'],
+            ['scripts/extract_chado_organisms.sh',         'pathdev_bin'],
             ['scripts/import_chado_go_terms.sh',           'pathdev_bin'],
             ['scripts/backup_chado_audit_schema.sh',       'pathdev_bin'],
             ['scripts/send_mail_with_content.sh',          'production_bin'],
