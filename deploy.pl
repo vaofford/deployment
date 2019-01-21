@@ -73,7 +73,7 @@ $repository->run( submodule => 'init');
 $repository->run( tag => $ENVIRONMENT."_".$config_settings{formatted_time_stamp} );
 $repository->run( push => origin => '--tags' );
 # fix me
-`cd $config_settings{checkout_directory} && git submodule update`;
+#`cd $config_settings{checkout_directory} && git submodule update`;
 
 
 # build and test 
