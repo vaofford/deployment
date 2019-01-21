@@ -115,7 +115,6 @@ general:
       [ 'scripts/filter_embl_with_essentiality.pl',                  'production_bin' ],
       [ 'scripts/extract_modifications_to_plots',                    'production_bin' ],
       [ 'scripts/het_snp_calculator.pl',                             'production_bin' ],
-      ['scripts/embl_to_ps.pl',					     'production_bin'],
   ]
 
   java: [
@@ -245,5 +244,6 @@ general:
       [ 'scripts/backup_chado_audit_schema.sh',       'pathdev_bin' ],
       [ 'scripts/send_mail_with_content.sh',          'production_bin'],
       [ 'scripts/pathpipe-pathpipe-farm3_crontab',    'pathdev_bin'],
-      [ 'scripts/pathdb_farm3_crontab',               'pathdev_bin']
+      [ 'scripts/pathdb_farm3_crontab',               'pathdev_bin'],
+      ['scripts/bam2bigwig+bedgraph',                 'production_bin']
   ]
