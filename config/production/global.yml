@@ -2,7 +2,7 @@ general:
   repository:
     url: 'git@gitlab.internal.sanger.ac.uk:sanger-pathogens/general.git'
     branch: 'master'
-  directories_to_build: ['java','perl','python','shell','c','lua','splimer','r','data', 'config']
+  directories_to_build: ['java','perl','python','shell','c','lua','r','data', 'config']
 
 checkout_directory: "/tmp"
 
