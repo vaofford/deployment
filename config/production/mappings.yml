@@ -145,6 +145,7 @@ general:
   config: [
         [ 'database_connection_details', 'pathdev_config' ],
         [ 'reftrack_connection_details', 'pathdev_config' ],
+        [ 'ena_data_submission.conf', 'pathdev_config' ],
   ]
 
   shell: [
