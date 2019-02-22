@@ -192,6 +192,7 @@ general:
         [ 'scripts/pathpipe-pathpipe-farm3_crontab',	'pathdev_bin' ],
         [ 'scripts/pathdb_farm3_crontab',		'pathdev_bin' ],
         [ 'scripts/setup_seroba_dbs.sh',		'pathdev_bin' ],
+        [ 'scripts/skesa',				'production_bin' ],
         [ 'scripts/sourmash',				'production_bin' ],
         [ 'scripts/tmhmm_chado',			'production_bin' ],
         [ 'scripts/writedb_entry',			'production_bin' ],
