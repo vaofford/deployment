@@ -188,7 +188,6 @@ general:
         [ 'scripts/extract_fasta_from_gff.sh',          'pathdev_bin' ],
         [ 'scripts/remove_fasta_from_gff.sh',           'pathdev_bin' ],
         [ 'scripts/copy_chado_gff_exports.sh',          'pathdev_bin' ],
-        [ 'scripts/extract_chado_comments.sh',          'pathdev_bin' ],
         [ 'scripts/pathpipe-pathpipe-farm3_crontab',	'pathdev_bin' ],
         [ 'scripts/pathdb_farm3_crontab',		'pathdev_bin' ],
         [ 'scripts/setup_seroba_dbs.sh',		'pathdev_bin' ],
