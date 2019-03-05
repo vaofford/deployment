@@ -50,7 +50,7 @@ Usage: $0 [options]
 Build, test, create documentation and install files.
 
  Options:
-     --environment		   The configuration settings you wish to use (test|production)
+     --environment		   The configuration settings you wish to use (test|local|production)
      --no-test                     Don't run tests after building sources
      --do-not-update               Don't update the checksums file
 
@@ -99,37 +99,50 @@ my $documentation = Deploy::Documentation->new(
 my %original_checksums = ();
 my %revised_checksums = ();
 
-# install code by copying to remote server
-my $scp_connection = Net::SCP->new( { host => $config_settings{deployment}{server}, user => $config_settings{deployment}{user}, interactive => 0 } ); 
-my $remote = Deploy::RemoteChecksum->new( $config_settings{deployment}{server}, $config_settings{deployment}{user} );
+# install code by copying to remote server (unless environment is set to local)
+my ($scp_connection, $remote);
+unless ($self->{environment} eq 'local') {
+  my $scp_connection = Net::SCP->new( { host => $config_settings{deployment}{server}, user => $config_settings{deployment}{user}, interactive => 0 } ); 
+  my $remote = Deploy::RemoteChecksum->new( $config_settings{deployment}{server}, $config_settings{deployment}{user} );
+}
+
 for my $directory (@{$config_settings{general}{directories_to_build}}) {
   for my $mappings (@{$repo_file_to_server_directory{general}{$directory}})
   {
     # set files to be group writeable and executable
     chmod(0775, "$config_settings{checkout_directory}/$directory/$mappings->[0]");
     
-    $scp_connection->cwd($mappings->[1]);
+    $scp_connection->cwd($mappings->[1]) unless ($self->{environment} eq 'local');
     
     if(-d "$config_settings{checkout_directory}/$directory/$mappings->[0]")
      {
        my($module_base, $directories, $suffix) = fileparse("$config_settings{checkout_directory}/$directory/$mappings->[0]");
-       $scp_connection->mkdir($module_base);
        my @files = File::Find::Rule->file()->name( "*" )->in( "$config_settings{checkout_directory}/$directory/$mappings->[0]/" );
+       
+       $scp_connection->mkdir($module_base) unless ( $self->{environment} eq 'local' );
 
        for my $module_file (@files)
        {
          my $relative_remote_dir = $module_file;
          $relative_remote_dir =~ s!$directories!!i;
          my($remote_file, $remote_base_dir, $suffix) = fileparse($relative_remote_dir);
-
-         $scp_connection->mkdir($mappings->[1].'/'.$remote_base_dir);
-         $scp_connection->cwd($mappings->[1].'/'.$remote_base_dir);
          my $remote_path = "$mappings->[1]/$relative_remote_dir";
-         my $checksum = $remote->checksum($remote_path);
-         $original_checksums{$remote_path} = $checksum;
-         $scp_connection->put("$module_file") or die $scp_connection->{errstr}." -> Try running ssh ".$config_settings{deployment}{server};
-         $checksum = $remote->checksum($remote_path);
-         $revised_checksums{$remote_path} = $checksum;
+         my $checksum;
+
+         if ($self->{environment} eq 'local') {
+          # Add something here
+          $revised_checksums{$remote_path} = $original_checksums{$remote_path};
+         } else {
+           $scp_connection->mkdir($mappings->[1].'/'.$remote_base_dir) ;
+           $scp_connection->cwd($mappings->[1].'/'.$remote_base_dir);
+
+           $checksum = $remote->checksum($remote_path);
+           $original_checksums{$remote_path} = $checksum;
+           $scp_connection->put("$module_file") or die $scp_connection->{errstr}." -> Try running ssh ".$config_settings{deployment}{server};
+           $checksum = $remote->checksum($remote_path);
+           $revised_checksums{$remote_path} = $checksum;
+         }
+         #$revised_checksums{$remote_path} = $checksum;
        }
      }
      else
@@ -138,9 +151,13 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
        my $remote_path = "$mappings->[1]/$fname";
        my $checksum = $remote->checksum($remote_path);
        $original_checksums{$remote_path} = $checksum;
-       $scp_connection->put("$config_settings{checkout_directory}/$directory/$mappings->[0]") or die $scp_connection->{errstr}." -> Try running ssh ".$config_settings{deployment}{server};
-       $checksum = $remote->checksum($remote_path);
-       $revised_checksums{$remote_path} = $checksum;
+       if ( $self->{environment} eq 'local' ) {
+
+       } else {
+         $scp_connection->put("$config_settings{checkout_directory}/$directory/$mappings->[0]") or die $scp_connection->{errstr}." -> Try running ssh ".$config_settings{deployment}{server};
+         $checksum = $remote->checksum($remote_path);
+         $revised_checksums{$remote_path} = $checksum;
+       }
      }
   }
 }
