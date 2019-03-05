@@ -20,7 +20,8 @@ application_locations:
   natural_docs:   '/software/pathogen/external/apps/usr/local/NaturalDocs-1.52/NaturalDocs'
   source_control: '/usr/bin/git'
   make:           '/usr/bin/make'
+  
 deployment:
-  server: 'pathpipe-farm4'
+  server: 'pathpipe-farm3'
   user: 'pathdb'
   checksums: '/software/pathogen/internal/prod/deployment_checksums.log'
