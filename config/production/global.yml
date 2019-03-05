@@ -21,6 +21,6 @@ application_locations:
   source_control: '/usr/bin/git'
   make:           '/usr/bin/make'
 deployment:
-  server: 'pathpipe-farm3'
+  server: 'pathpipe-farm4'
   user: 'pathdb'
   checksums: '/software/pathogen/internal/prod/deployment_checksums.log'
