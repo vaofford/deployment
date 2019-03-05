@@ -114,20 +114,20 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
     
     $scp_connection->cwd($mappings->[1]) unless ($ENVIRONMENT eq 'local');
     
+
     if(-d "$config_settings{checkout_directory}/$directory/$mappings->[0]")
      {
        my($module_base, $directories, $suffix) = fileparse("$config_settings{checkout_directory}/$directory/$mappings->[0]");
        my @files = File::Find::Rule->file()->name( "*" )->in( "$config_settings{checkout_directory}/$directory/$mappings->[0]/" );
 
        $scp_connection->mkdir($module_base) unless ( $ENVIRONMENT eq 'local' );
-
+        
        for my $module_file (@files)
        {
          my $relative_remote_dir = $module_file;
          $relative_remote_dir =~ s!$directories!!i;
          my($remote_file, $remote_base_dir, $suffix) = fileparse($relative_remote_dir);
          my $remote_path = "$mappings->[1]/$relative_remote_dir";
-         my $checksum;
 
          if ($ENVIRONMENT eq 'local') {
           # Add something here
@@ -136,7 +136,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
            $scp_connection->mkdir($mappings->[1].'/'.$remote_base_dir) ;
            $scp_connection->cwd($mappings->[1].'/'.$remote_base_dir);
 
-           $checksum = $remote->checksum($remote_path);
+           my $checksum = $remote->checksum($remote_path);
            $original_checksums{$remote_path} = $checksum;
            $scp_connection->put("$module_file") or die $scp_connection->{errstr}." -> Try running ssh ".$config_settings{deployment}{server};
            $checksum = $remote->checksum($remote_path);
@@ -149,11 +149,11 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
      {
        my ($fname, $path, $suffix) = fileparse("$config_settings{checkout_directory}/$directory/$mappings->[0]");
        my $remote_path = "$mappings->[1]/$fname";
-       my $checksum = $remote->checksum($remote_path);
-       $original_checksums{$remote_path} = $checksum;
        if ( $ENVIRONMENT eq 'local' ) {
 
        } else {
+         my $checksum = $remote->checksum($remote_path);
+         $original_checksums{$remote_path} = $checksum;
          $scp_connection->put("$config_settings{checkout_directory}/$directory/$mappings->[0]") or die $scp_connection->{errstr}." -> Try running ssh ".$config_settings{deployment}{server};
          $checksum = $remote->checksum($remote_path);
          $revised_checksums{$remote_path} = $checksum;
