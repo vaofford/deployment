@@ -162,8 +162,12 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
   }
 }
 
-$remote->compare_mappings(\%original_checksums, \%revised_checksums);
-$remote->write_logfile($config_settings{deployment}{checksums}, \%revised_checksums) unless $NO_UPDATE_CHECKSUMS;
+if ( $ENVIRONMENT eq 'local' ) {
+
+} else {
+  $remote->compare_mappings(\%original_checksums, \%revised_checksums);
+  $remote->write_logfile($config_settings{deployment}{checksums}, \%revised_checksums) unless $NO_UPDATE_CHECKSUMS;
+}
 
 # cleanup working directories
 my $directory_to_delete = $config_settings{checkout_directory};
