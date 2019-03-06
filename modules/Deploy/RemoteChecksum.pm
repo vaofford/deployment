@@ -52,6 +52,19 @@ sub checksum
   return $checksum;
 }
 
+sub checksum_local
+{
+  my( $self, $path ) = @_;
+  my $cmd = "if [ -e $path ]; then
+                md5sum $path | awk '{print \$1}';
+              else
+                echo 'File not found';
+              fi";
+  my $checksum = `$cmd`;
+  chomp($checksum);
+  return $checksum;
+}
+
 sub compare_mappings
 {
   my ( $self, $original, $revised ) = @_;
@@ -74,6 +87,21 @@ sub write_logfile
   chomp($log_output);
 
   my $response = $self->_cmd("echo '$log_output' > $remote_log_path");
+}
+
+sub write_logfile_local
+{
+  my ( $self, $remote_log_path, $checksums ) = @_;
+  my $log_output = "";
+
+  foreach my $file_path ( sort keys %$checksums ) {
+    my $checksum = $checksums->{$file_path};
+    $log_output .= "$checksum  $file_path\n";
+  }
+  chomp($log_output);
+  
+  my $cmd = "echo '$log_output' > $remote_log_path";
+  my $response = `$cmd`;
 }
 
 1;
