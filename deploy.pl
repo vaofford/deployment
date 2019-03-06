@@ -138,8 +138,8 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
            $original_checksums{$remote_path} = $checksum;
 
            unless( -d dirname($remote_path) ) {
-              my $dirs = eval { mkpath($path) };
-              die "Failed to create $path: $@\n" unless $dirs;
+              my $dirs = eval { mkpath( dirname($remote_path) ) };
+              die "Failed to create " . dirname($remote_path) . ": $@\n" unless $dirs;
            };
            copy($module_file,$remote_path) or die "Copy failed: $!";
 
@@ -167,8 +167,8 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
          $original_checksums{$remote_path} = $checksum;
          my $module_file ="$config_settings{checkout_directory}/$directory/$mappings->[0]";
          unless( -d dirname($remote_path) ) {
-            my $dirs = eval { mkpath($path) };
-            die "Failed to create $path: $@\n" unless $dirs;
+            my $dirs = eval { mkpath( dirname($remote_path) ) };
+            die "Failed to create " . dirname($remote_path) . ": $@\n" unless $dirs;
          };
          copy($module_file,$remote_path) or die "Copy failed: $!";
          $checksum = $remote->checksum($remote_path);
