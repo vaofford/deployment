@@ -134,7 +134,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
 
          my $checksum;
          if ($ENVIRONMENT eq 'local') {
-           $checksum = $remote->checksum($remote_path);
+           $checksum = $remote->checksum_local($remote_path);
            $original_checksums{$remote_path} = $checksum;
 
            unless( -d dirname($remote_path) ) {
@@ -143,7 +143,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
            };
            copy($module_file,$remote_path) or die "Copy failed: $!";
 
-           $checksum = checksum($remote_path);
+           $checksum = checksum_local($remote_path);
            $revised_checksums{$remote_path} = $checksum;
          } else {
            $scp_connection->mkdir($mappings->[1].'/'.$remote_base_dir) ;
@@ -163,7 +163,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
        my ($fname, $path, $suffix) = fileparse("$config_settings{checkout_directory}/$directory/$mappings->[0]");
        my $remote_path = "$mappings->[1]/$fname";
        if ( $ENVIRONMENT eq 'local' ) {
-         my $checksum = $remote->checksum($remote_path);
+         my $checksum = $remote->checksum_local($remote_path);
          $original_checksums{$remote_path} = $checksum;
          my $module_file ="$config_settings{checkout_directory}/$directory/$mappings->[0]";
          unless( -d dirname($remote_path) ) {
@@ -171,7 +171,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
             die "Failed to create " . dirname($remote_path) . ": $@\n" unless $dirs;
          };
          copy($module_file,$remote_path) or die "Copy failed: $!";
-         $checksum = $remote->checksum($remote_path);
+         $checksum = $remote->checksum_local($remote_path);
          $revised_checksums{$remote_path} = $checksum;
 
        } else {
