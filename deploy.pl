@@ -174,7 +174,6 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
          copy($module_file,$remote_path) or die "Copy failed: $!";
          $checksum = $remote->checksum_local($remote_path);
          $revised_checksums{$remote_path} = $checksum;
-
        } else {
          my $checksum = $remote->checksum($remote_path);
          $original_checksums{$remote_path} = $checksum;
