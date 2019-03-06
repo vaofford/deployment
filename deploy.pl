@@ -29,6 +29,7 @@ use warnings;
 use Getopt::Long;
 use Net::SCP;
 use File::Path;
+use File::Copy qw(copy);
 use File::Basename;
 use Git::Repository;
 use File::Find::Rule ;
