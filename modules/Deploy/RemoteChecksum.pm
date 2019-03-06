@@ -100,7 +100,7 @@ sub write_logfile_local
   }
   chomp($log_output);
   
-  my $cmd = "echo '$log_output' > $remote_log_path"
+  my $cmd = "echo '$log_output' > $remote_log_path";
   my $response = `$cmd`;
 }
 
