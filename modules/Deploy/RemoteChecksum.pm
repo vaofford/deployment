@@ -52,6 +52,19 @@ sub checksum
   return $checksum;
 }
 
+sub checksum_local
+{
+  my( $self, $path ) = @_;
+  my $cmd = "if [ -e $path ]; then
+                md5sum $path | awk '{print \$1}';
+              else
+                echo 'File not found';
+              fi";
+  my $checksum = `$cmd`;
+  chomp($checksum);
+  return $checksum;
+}
+
 sub compare_mappings
 {
   my ( $self, $original, $revised ) = @_;

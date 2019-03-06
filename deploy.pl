@@ -6,7 +6,7 @@ deploy.pl
 
 =head1 SYNOPSIS
 
-deploy -e [test|production]
+deploy -e [test|local|production]
 
 =head1 DESCRIPTION
 
@@ -28,6 +28,7 @@ use strict;
 use warnings;
 use Getopt::Long;
 use Net::SCP;
+use File::Path;
 use File::Basename;
 use Git::Repository;
 use File::Find::Rule ;
@@ -101,7 +102,9 @@ my %revised_checksums = ();
 
 # install code by copying to remote server (unless environment is set to local)
 my ($scp_connection, $remote);
-unless ( $ENVIRONMENT eq 'local') {
+if ( $ENVIRONMENT eq 'local') {
+  $remote = Deploy::RemoteChecksum->new( 'NULL', 'NULL');
+} else {
   $scp_connection = Net::SCP->new( { host => $config_settings{deployment}{server}, user => $config_settings{deployment}{user}, interactive => 0 } ); 
   $remote = Deploy::RemoteChecksum->new( $config_settings{deployment}{server}, $config_settings{deployment}{user} );
 }
@@ -129,20 +132,30 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
          my($remote_file, $remote_base_dir, $suffix) = fileparse($relative_remote_dir);
          my $remote_path = "$mappings->[1]/$relative_remote_dir";
 
+         my $checksum;
          if ($ENVIRONMENT eq 'local') {
-          # Add something here
-          $revised_checksums{$remote_path} = $original_checksums{$remote_path};
+           $checksum = $remote->checksum($remote_path);
+           $original_checksums{$remote_path} = $checksum;
+
+           unless( -d dirname($remote_path) ) {
+              my $dirs = eval { mkpath($path) };
+              die "Failed to create $path: $@\n" unless $dirs;
+           };
+           copy($module_file,$remote_path) or die "Copy failed: $!";
+
+           $checksum = checksum($remote_path);
+           $revised_checksums{$remote_path} = $checksum;
          } else {
            $scp_connection->mkdir($mappings->[1].'/'.$remote_base_dir) ;
            $scp_connection->cwd($mappings->[1].'/'.$remote_base_dir);
 
-           my $checksum = $remote->checksum($remote_path);
+           $checksum = $remote->checksum($remote_path);
            $original_checksums{$remote_path} = $checksum;
            $scp_connection->put("$module_file") or die $scp_connection->{errstr}." -> Try running ssh ".$config_settings{deployment}{server};
            $checksum = $remote->checksum($remote_path);
            $revised_checksums{$remote_path} = $checksum;
          }
-         #$revised_checksums{$remote_path} = $checksum;
+         $revised_checksums{$remote_path} = $checksum;
        }
      }
      else
@@ -150,6 +163,16 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
        my ($fname, $path, $suffix) = fileparse("$config_settings{checkout_directory}/$directory/$mappings->[0]");
        my $remote_path = "$mappings->[1]/$fname";
        if ( $ENVIRONMENT eq 'local' ) {
+         my $checksum = Deploy::RemoteChecksum->checksum($remote_path);
+         $original_checksums{$remote_path} = $checksum;
+         my $module_file ="$config_settings{checkout_directory}/$directory/$mappings->[0]";
+         unless( -d dirname($remote_path) ) {
+            my $dirs = eval { mkpath($path) };
+            die "Failed to create $path: $@\n" unless $dirs;
+         };
+         copy($module_file,$remote_path) or die "Copy failed: $!";
+         $checksum = $remote->checksum($remote_path);
+         $revised_checksums{$remote_path} = $checksum;
 
        } else {
          my $checksum = $remote->checksum($remote_path);
