@@ -163,7 +163,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
        my ($fname, $path, $suffix) = fileparse("$config_settings{checkout_directory}/$directory/$mappings->[0]");
        my $remote_path = "$mappings->[1]/$fname";
        if ( $ENVIRONMENT eq 'local' ) {
-         my $checksum = Deploy::RemoteChecksum->checksum($remote_path);
+         my $checksum = $remote->checksum($remote_path);
          $original_checksums{$remote_path} = $checksum;
          my $module_file ="$config_settings{checkout_directory}/$directory/$mappings->[0]";
          unless( -d dirname($remote_path) ) {
