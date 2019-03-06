@@ -89,4 +89,19 @@ sub write_logfile
   my $response = $self->_cmd("echo '$log_output' > $remote_log_path");
 }
 
+sub write_logfile_local
+{
+  my ( $self, $remote_log_path, $checksums ) = @_;
+  my $log_output = "";
+
+  foreach my $file_path ( sort keys %$checksums ) {
+    my $checksum = $checksums->{$file_path};
+    $log_output .= "$checksum  $file_path\n";
+  }
+  chomp($log_output);
+  
+  my $cmd = "echo '$log_output' > $remote_log_path"
+  my $response = `$cmd`;
+}
+
 1;

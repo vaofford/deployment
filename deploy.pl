@@ -188,7 +188,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
 
 if ( $ENVIRONMENT eq 'local' ) {
   $remote->compare_mappings(\%original_checksums, \%revised_checksums);
-  $remote->write_logfile($config_settings{deployment}{checksums}, \%revised_checksums) unless $NO_UPDATE_CHECKSUMS;
+  $remote->write_logfile_local($config_settings{deployment}{checksums}, \%revised_checksums) unless $NO_UPDATE_CHECKSUMS;
 } else {
   $remote->compare_mappings(\%original_checksums, \%revised_checksums);
   $remote->write_logfile($config_settings{deployment}{checksums}, \%revised_checksums) unless $NO_UPDATE_CHECKSUMS;
