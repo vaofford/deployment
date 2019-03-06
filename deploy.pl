@@ -144,7 +144,7 @@ for my $directory (@{$config_settings{general}{directories_to_build}}) {
            };
            copy($module_file,$remote_path) or die "Copy failed: $!";
 
-           $checksum = checksum_local($remote_path);
+           $checksum = $remote->checksum_local($remote_path);
            $revised_checksums{$remote_path} = $checksum;
          } else {
            $scp_connection->mkdir($mappings->[1].'/'.$remote_base_dir) ;
